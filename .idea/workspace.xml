@@ -10,10 +10,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f02bc179-ecd7-44ac-aa38-76454d17a5a1" name="Default Changelist" comment="make migrations for reset-password">
+    <list default="true" id="f02bc179-ecd7-44ac-aa38-76454d17a5a1" name="Default Changelist" comment="fix email address">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +182,7 @@
       <workItem from="1604504987271" duration="12290000" />
       <workItem from="1604571328268" duration="12131000" />
       <workItem from="1605878055062" duration="4536000" />
-      <workItem from="1606388686284" duration="2226000" />
+      <workItem from="1606388686284" duration="2863000" />
     </task>
     <task id="LOCAL-00001" summary="setup reset-password-bundle">
       <created>1606389280033</created>
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606389875119</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix email address">
+      <created>1606390983789</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606390983789</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +235,8 @@
     <MESSAGE value="setup reset-password-bundle" />
     <MESSAGE value="generating the reset password code" />
     <MESSAGE value="make migrations for reset-password" />
-    <option name="LAST_COMMIT_MESSAGE" value="make migrations for reset-password" />
+    <MESSAGE value="fix email address" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix email address" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605879939802">
