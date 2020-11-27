@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Password Reset Email Sent{% endblock %}
+{% block title %}BSUfood{% endblock %}
 
 {% block content %}
 
     <main>
         <div class="container-fluid"
              style="width:500px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
-            <p>An email has been sent that contains a link that you can click to reset your password. This link will
-                expire in {{ tokenLifetime|date('g') }} hour(s).</p>
-            <p>If you don't receive an email please check your spam folder or <a
-                        href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+            <p>Вам на почту было отправлено письмо, которое содержит ссылку для восстановления пароля. Время действия
+                ссылки истечет через {{ tokenLifetime|date('g') }} час(-ов).</p>
+            <p>Если вы не получили письмо, проверьте папку спам или <a
+                        href="{{ path('app_forgot_password_request') }}">попробуйте ещё раз</a>.</p>
 
         </div>
     </main>
