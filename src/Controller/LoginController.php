@@ -18,7 +18,7 @@ class LoginController extends AbstractController
             if (in_array("ROLE_ADMIN",$this->getUser()->getRoles())) {
                 return $this->redirectToRoute('admin');
             }
-             return $this->redirectToRoute('quizzes');
+             return $this->redirectToRoute('menu');
         }
 
         // get the login error if there is one

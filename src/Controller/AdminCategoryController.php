@@ -6,13 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MenuController extends AbstractController
+class AdminCategoryController extends AbstractController
 {
     /**
-     * @Route("/menu", name="menu")
+     * @Route("/admin/category", name="admin_category")
      */
     public function index(): Response
     {
-        return $this->render('quizes_list/index.html.twig');
+        return $this->render('admin_category/index.html.twig', [
+            'controller_name' => 'AdminCategoryController',
+        ]);
     }
 }
