@@ -47,11 +47,12 @@
                 </div>
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}">
-                <div class="text-center">
+                <div class="text-center" style="margin-top: 10px;">
                     <button type="submit" class="btn btn-primary" style="background-color: #0A3470;">Войти</button>
                 </div>
                 <div id="emailHelp" class="form-text text-center">
-                    <a class="link-dark" href="{{ path('app_forgot_password_request') }}">{% trans %}Не получается войти?{% endtrans %}</a>
+                    <a class="link-dark"
+                       href="{{ path('app_forgot_password_request') }}">{% trans %}Не получается войти?{% endtrans %}</a>
                 </div>
             </form>
         </div>

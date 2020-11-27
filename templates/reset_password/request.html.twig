@@ -6,17 +6,37 @@
     {% for flashError in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-    <h1>Reset your password</h1>
 
-    {{ form_start(requestForm) }}
-        {{ form_row(requestForm.email) }}
-        <div>
-            <small>
-                Enter your email address and we we will send you a
-                link to reset your password.
-            </small>
+
+    <main>
+        <div class="container-fluid"
+             style="width:500px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
+
+            {{ form_start(requestForm) }}
+
+
+            <div class="form-group">
+                {{ form_label(requestForm.email,null,{ 'label':'Email'}) }}
+                {{ form_widget(requestForm.email,{'attr': {'class': 'form-control', 'style':'background-color: #E5E5E5;'}}) }}
+            </div>
+
+            <div>
+                <small>
+                    Введите email и мы отправим вам ссылку для восстановления пароля
+                </small>
+            </div>
+
+            <div class="text-center" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary" style="background-color: #0A3470;">Подтвердить
+                </button>
+            </div>
+
+
+            {{ form_end(requestForm) }}
+
+
         </div>
+    </main>
 
-        <button class="btn btn-primary">Send password reset email</button>
-    {{ form_end(requestForm) }}
+
 {% endblock %}
