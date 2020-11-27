@@ -37,14 +37,15 @@
                 }) }}
                 {{ form_widget(registrationForm.plainPassword,{'attr': {'class': 'form-control','style':'background-color: #E5E5E5;'}}) }}
             </div>
-            <div class="text-center">
+            <div class="text-center" style="margin-top: 10px;">
                 <button type="submit" class="btn btn-primary" style="background-color: #0A3470;">Зарегистрироваться
                 </button>
-                {{ form_end(registrationForm) }}
             </div>
+            {{ form_end(registrationForm) }}
+
         </div>
     </main>
-    
+
 {% endblock %}
 
 
