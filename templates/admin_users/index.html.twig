@@ -1,43 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends 'homeBase.html.twig' %}
 
-{% block title %}Hello AdminUsersController!{% endblock %}
+{% block title %}BSUfood{% endblock %}
 
 {% block content %}
-    <table class="table" id="usertable">
-        <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">
-                <input type="checkbox"  id="select_all">
-            </th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Roles</th>
-            <th scope="col">status</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if users %}
-        {% for user in users %}
-            <tr>
-                <td scope="col">{{ user.id }}</td>
-                <td>
-                    <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
-                </td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles | json_encode }}</td>
-                {% if user.status %}
-                <td>active</td>
-                {% else %}
-                <td>not active</td>
+
+    <script>
+        $(document).ready(function () {
+            $('#usertable').DataTable();
+        });
+    </script>
+
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            <table class="table" id="usertable">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">
+                        <input type="checkbox" id="select_all">
+                    </th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col">status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if users %}
+                    {% for user in users %}
+                        <tr>
+                            <td scope="col">{{ user.id }}</td>
+                            <td>
+                                <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
+                            </td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.roles | json_encode }}</td>
+                            {% if user.status %}
+                                <td>active</td>
+                            {% else %}
+                                <td>not active</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
                 {% endif %}
-            </tr>
-        {% endfor %}
-        {% endif %}
-        </tbody>
-    </table>
-    <div class="navigation">
-        {{ knp_pagination_render(users) }}
-    </div>
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(users) }}
+            </div>
+
+        </div>
+    </main>
+
 {% endblock %}
+

@@ -1,7 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'homeBase.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}BSUfood{% endblock %}
 
 {% block content %}
-    <button type = "button" onclick = "location.href='/admin/users'" class="btn btn-primary btn-lg btn-block" > Users controll </button >
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            <button type="button" onclick="location.href='/admin/users'" class="btn btn-primary btn-lg btn-block"> Users
+                controll
+            </button>
+        </div>
+    </main>
 {% endblock %}
