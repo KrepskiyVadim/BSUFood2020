@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreateDishController extends AbstractController
 {
     /**
-     * @Route("/create/dish", name="create_dish")
+     * @Route("/admin/create/dish", name="create_dish")
      */
     public function index(Request $request): Response
     {

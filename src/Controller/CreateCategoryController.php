@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreateCategoryController extends AbstractController
 {
     /**
-     * @Route("/create/category", name="create_category")
+     * @Route("/admin/create/category", name="create_category")
      */
     public function index(Request $request): Response
     {

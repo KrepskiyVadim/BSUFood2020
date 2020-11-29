@@ -1,20 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends 'homeBase.html.twig' %}
 
-{% block title %}Hello AdminCategoryController!{% endblock %}
+{% block title %}BSUfood{% endblock %}
 
 {% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <script>
+        $(document).ready(function () {
+            $('#categorytable').DataTable();
+        });
+    </script>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/OpenServer/domains/BSUFood2020/src/Controller/AdminCategoryController.php'|file_link(0) }}">src/Controller/AdminCategoryController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/OpenServer/domains/BSUFood2020/templates/admin_category/index.html.twig'|file_link(0) }}">templates/admin_category/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            <table class="table" id="categorytable">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">
+                        <input type="checkbox" id="select_all">
+                    </th>
+                    <th scope="col">CategoryName</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if categories %}
+                    {% for category in categories %}
+                        <tr>
+                            <td scope="col">{{ category.id }}</td>
+                            <td>
+                                <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
+                            </td>
+                            <td>{{ category.name }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(categories) }}
+            </div>
+
+        </div>
+    </main>
+
 {% endblock %}
+
