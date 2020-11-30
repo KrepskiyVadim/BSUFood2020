@@ -17,9 +17,6 @@
                 <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">
-                        <input type="checkbox" id="select_all">
-                    </th>
                     <th scope="col">CategoryName</th>
                 </tr>
                 </thead>
@@ -28,9 +25,6 @@
                     {% for category in categories %}
                         <tr>
                             <td scope="col">{{ category.id }}</td>
-                            <td>
-                                <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
-                            </td>
                             <td>{{ category.name }}</td>
                             <td><a href ="{{ absolute_url(asset('')) }}admin/categories/delete_category/{{ category.id }}"
                                    class="btn btn-danger btn-sm"><button>Delete</button></a></td>

@@ -17,9 +17,6 @@
                 <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">
-                        <input type="checkbox" id="select_all">
-                    </th>
                     <th scope="col">DishName</th>
                     <th scope="col">Category</th>
                     <th scope="col">Price</th>
@@ -31,9 +28,6 @@
                     {% for dish in dishes %}
                         <tr>
                             <td scope="col">{{ dish.id }}</td>
-                            <td>
-                                <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
-                            </td>
                             <td>{{ dish.name }}</td>
                             <td>{{ dish.category }}</td>
                             <td>{{ dish.price }}</td>
