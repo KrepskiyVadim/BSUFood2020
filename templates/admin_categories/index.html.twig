@@ -37,12 +37,12 @@
                         </tr>
                     {% endfor %}
                 {% endif %}
+                <button><a href = "{{ path('create_category') }}">Add Category</a></button>
                 </tbody>
             </table>
             <div class="navigation">
                 {{ knp_pagination_render(categories) }}
             </div>
-
         </div>
     </main>
 

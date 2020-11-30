@@ -22,6 +22,8 @@
                     </th>
                     <th scope="col">DishName</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Count</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,11 +36,14 @@
                             </td>
                             <td>{{ dish.name }}</td>
                             <td>{{ dish.category }}</td>
+                            <td>{{ dish.price }}</td>
+                            <td>{{ dish.count }}</td>
                             <td><a href ="{{ absolute_url(asset('')) }}admin/dishes/delete_dish/{{ dish.id }}"
                                    class="btn btn-danger btn-sm"><button>Delete</button></a></td>
                         </tr>
                     {% endfor %}
                 {% endif %}
+                <button><a href = "{{ path('create_dish') }}">Add Dish</a></button>
                 </tbody>
             </table>
             <div class="navigation">
