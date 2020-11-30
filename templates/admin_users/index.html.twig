@@ -42,6 +42,8 @@
                             {% else %}
                                 <td>not active</td>
                             {% endif %}
+                            <td><a href ="{{ absolute_url(asset('')) }}admin/users/delete_user/{{ user.id }}"
+                                   class="btn btn-danger btn-sm"></a>Delete</td>
                         </tr>
                     {% endfor %}
                 {% endif %}
