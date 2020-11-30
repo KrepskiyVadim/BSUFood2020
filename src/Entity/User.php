@@ -57,7 +57,10 @@ class User implements UserInterface
      */
     private $phonenumber;
 
-
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     /**
      * A visual identifier that represents this user.
      *

@@ -17,11 +17,9 @@
                 <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">
-                        <input type="checkbox" id="select_all">
-                    </th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
+                    <th scope="col">PhoneNumber</th>
                     <th scope="col">Roles</th>
                     <th scope="col">status</th>
                 </tr>
@@ -31,11 +29,9 @@
                     {% for user in users %}
                         <tr>
                             <td scope="col">{{ user.id }}</td>
-                            <td>
-                                <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
-                            </td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>
+                            <td>{{ user.phonenumber }}</td>
                             <td>{{ user.roles | json_encode }}</td>
                             {% if user.status %}
                                 <td>active</td>
@@ -53,7 +49,6 @@
             <div class="navigation">
                 {{ knp_pagination_render(users) }}
             </div>
-
         </div>
     </main>
 
