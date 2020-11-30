@@ -24,6 +24,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => array(
                     'autofocus' => true
                 )))
+            ->add('phonenumber', TelType::class)
             ->add('email', EmailType::class)
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

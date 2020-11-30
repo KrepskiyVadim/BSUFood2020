@@ -52,10 +52,11 @@ class User implements UserInterface
      */
     private $status;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    /**
+     * @ORM\Column(type="string", length=13)
+     */
+    private $phonenumber;
+
 
     /**
      * A visual identifier that represents this user.
@@ -145,6 +146,18 @@ class User implements UserInterface
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPhonenumber(): ?string
+    {
+        return $this->phonenumber;
+    }
+
+    public function setPhonenumber(string $phonenumber): self
+    {
+        $this->phonenumber = $phonenumber;
 
         return $this;
     }
