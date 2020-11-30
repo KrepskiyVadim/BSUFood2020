@@ -34,6 +34,8 @@
                             </td>
                             <td>{{ dish.name }}</td>
                             <td>{{ dish.category }}</td>
+                            <td><a href ="{{ absolute_url(asset('')) }}admin/dishes/delete_dish/{{ dish.id }}"
+                                   class="btn btn-danger btn-sm"><button>Delete</button></a></td>
                         </tr>
                     {% endfor %}
                 {% endif %}

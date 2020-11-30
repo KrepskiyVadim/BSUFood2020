@@ -32,6 +32,8 @@
                                 <input type='checkbox' name='cheks[]' value="<?php echo $item->email;?>">
                             </td>
                             <td>{{ category.name }}</td>
+                            <td><a href ="{{ absolute_url(asset('')) }}admin/categories/delete_category/{{ category.id }}"
+                                   class="btn btn-danger btn-sm"><button>Delete</button></a></td>
                         </tr>
                     {% endfor %}
                 {% endif %}

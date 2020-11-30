@@ -28,7 +28,7 @@ class AdminDishesController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin/dishes/delete_categories/{id}", name="delete_dish")
+     * @Route("/admin/dishes/delete_dish/{id}", name="delete_dish")
      * @param $id
      */
     public function deleteCategory(int $id)
