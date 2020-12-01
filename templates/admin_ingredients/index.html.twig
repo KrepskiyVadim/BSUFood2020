@@ -1,0 +1,44 @@
+{% extends 'homeBase.html.twig' %}
+
+{% block title %}BSUfood{% endblock %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function () {
+            $('#ingredienttable').DataTable();
+        });
+    </script>
+
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            <table class="table" id="ingredienttable">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">IngredientName</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if ingredients %}
+                    {% for ingredient in ingredients %}
+                        <tr>
+                            <td scope="col">{{ ingredient.id }}</td>
+                            <td>{{ ingredient.name }}</td>
+                            <td><a href ="{{ absolute_url(asset('')) }}admin/ingredients/delete_ingredient/{{ ingredient.id }}"
+                                   class="btn btn-danger btn-sm"><button>Delete</button></a></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                <button><a href = "{{ path('create_ingredients') }}">Add Ingredient</a></button>
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(ingredients) }}
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+

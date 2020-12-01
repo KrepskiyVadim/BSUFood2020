@@ -1,0 +1,47 @@
+{% extends 'homeBase.html.twig' %}
+
+{% block title %}BSUfood{% endblock %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function () {
+            $('#dish_compositionstable').DataTable();
+        });
+    </script>
+
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            <table class="table" id="dish_compositionstable">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">dish</th>
+                    <th scope="col">ingredient</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if dish_compositions %}
+                    {% for dish_composition in dish_compositions %}
+                        <tr>
+                            <td scope="col">{{ dish_composition.id }}</td>
+                            <td>{{ dish_composition.dish }}</td>
+                            <td>{{ dish_composition.ingredient }}</td>
+                            <td><a href ="{{ absolute_url(asset('')) }}admin/dish_composition/delete_dish_composition/{{ dish_composition.id }}"
+                                   class="btn btn-danger btn-sm"><button>Delete</button></a></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                <button><a href = "{{ path('create_dish_composition') }}">Add DishComposition</a></button>
+                </tbody>
+            </table>
+            <div class="navigation">
+                {{ knp_pagination_render(dish_compositions) }}
+            </div>
+
+        </div>
+    </main>
+
+{% endblock %}
+

@@ -31,14 +31,12 @@ class AdminDishesController extends AbstractController
      * @Route("/admin/dishes/delete_dish/{id}", name="delete_dish")
      * @param $id
      */
-    public function deleteCategory(int $id)
+    public function deleteDish(int $id)
     {
         $em = $this->getDoctrine()->getManager();
         $dsh = $em->getRepository(Dish::class)->find($id);
         $em->remove($dsh);
         $em->flush();
-
-
         return $this->redirectToRoute('admin_dishes');
     }
 }
