@@ -23,6 +23,12 @@ class DishComposition
      */
     private $dish;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Ingredient::class, inversedBy="ingredient_id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ingredient;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,6 +42,18 @@ class DishComposition
     public function setDish(?Dish $dish): self
     {
         $this->dish = $dish;
+
+        return $this;
+    }
+
+    public function getIngredient(): ?Ingredient
+    {
+        return $this->ingredient;
+    }
+
+    public function setIngredient(?Ingredient $ingredient): self
+    {
+        $this->ingredient = $ingredient;
 
         return $this;
     }
