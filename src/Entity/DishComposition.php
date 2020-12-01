@@ -21,21 +21,21 @@ class DishComposition
      * @ORM\ManyToOne(targetEntity=Dish::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $ingredient;
+    private $dish;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIngredient(): ?Dish
+    public function getDish(): ?Dish
     {
-        return $this->ingredient;
+        return $this->dish;
     }
 
-    public function setIngredient(?Dish $ingredient): self
+    public function setDish(?Dish $dish): self
     {
-        $this->ingredient = $ingredient;
+        $this->dish = $dish;
 
         return $this;
     }
