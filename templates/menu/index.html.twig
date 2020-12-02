@@ -1,0 +1,37 @@
+{% extends 'homeBase.html.twig' %}
+
+{% block title %}BSUfood{% endblock %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function () {
+            $('#dishtable').DataTable();
+        });
+    </script>
+
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+                {% if dishes %}
+                    {% if categories %}
+                        {% for category in categories %}
+                            <h1>{{ category.name }}</h1>
+                            {% for dish in dishes %}
+                                {% if dish.category.id == category.id %}
+                                <div><td>{{ dish.name }}</td>
+                                <td>{{ dish.price }}</td></div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            <div class="navigation">
+                {{ knp_pagination_render(dishes) }}
+            </div>
+
+        </div>
+    </main>
+
+{% endblock %}
+
