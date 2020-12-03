@@ -1,9 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block title %}Hello CreateCategoryController!{% endblock %}
 
 {% block content %}
-{{ form_start(form) }}
-    <button>Create</button>
-{{ form_end(form) }}
+    <main>
+        <div class="container-fluid"
+             style="margin:100px auto; padding: 20px; background-color: white;">
+            {{ form_start(form) }}
+            <button>Create</button>
+            {{ form_end(form) }}
+        </div>
+    </main>
 {% endblock %}

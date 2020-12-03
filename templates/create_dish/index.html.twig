@@ -1,9 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block title %}Hello CreateDishController!{% endblock %}
 
 {% block content %}
-    {{ form_start(form) }}
-    <button>Create</button>
-    {{ form_end(form) }}
+
+    <main>
+        <div class="container-fluid"
+             style="width:350px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
+
+            {{ form_start(form) }}
+            <button>Create</button>
+            {{ form_end(form) }}
+        </div>
+    </main>
+
 {% endblock %}
