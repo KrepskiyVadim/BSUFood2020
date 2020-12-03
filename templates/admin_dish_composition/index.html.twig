@@ -1,4 +1,4 @@
-{% extends 'homeBase.html.twig' %}
+{% extends 'adminBase.html.twig' %}
 
 {% block title %}BSUfood{% endblock %}
 
@@ -12,13 +12,14 @@
 
     <main>
         <div class="container-fluid"
-             style="margin:100px auto; padding: 20px; background-color: white;">
-            <table class="table" id="dish_compositionstable">
-                <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">dish</th>
-                    <th scope="col">ingredient</th>
+             style="margin:10px auto; padding: 20px; background-color: white;">
+            <table class="table table-hover table-bordered table-striped" id="dish_compositionstable">
+                <thead style=" background-color: #0A3470;">
+                <tr style="color: rgba(255,255,255,.55)">
+                    <th scope="col">Id</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,12 +29,22 @@
                             <td scope="col">{{ dish_composition.id }}</td>
                             <td>{{ dish_composition.dish }}</td>
                             <td>{{ dish_composition.ingredient }}</td>
-                            <td><a href ="{{ absolute_url(asset('')) }}admin/dish_composition/delete_dish_composition/{{ dish_composition.id }}"
-                                   class="btn btn-danger btn-sm"><button>Delete</button></a></td>
+                            <td>
+                                <a href="{{ absolute_url(asset('')) }}admin/dish_composition/delete_dish_composition/{{ dish_composition.id }}">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill"
+                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+                                    </svg>
+                                </a></td>
                         </tr>
                     {% endfor %}
                 {% endif %}
-                <button><a href = "{{ path('create_dish_composition') }}">Add DishComposition</a></button>
+                <a href="{{ path('create_dish_composition') }}">
+                    <button class="btn btn-primary" style="background-color: #0A3470; margin:10px auto;">Добавить
+                        композицию
+                    </button>
+                </a>
                 </tbody>
             </table>
             <div class="navigation">
