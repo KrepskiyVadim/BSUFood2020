@@ -23,7 +23,7 @@ class CreateDishFormType extends AbstractType
                     'expanded'=>false,
                 ])
                 ->add('price')
-                ->add('count',IntegerType::class);
+                ->add('weight');
         ;
     }
 

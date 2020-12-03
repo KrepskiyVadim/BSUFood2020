@@ -19,8 +19,12 @@
                             <h1>{{ category.name }}</h1>
                             {% for dish in dishes %}
                                 {% if dish.category.id == category.id %}
-                                <div><td>{{ dish.name }}</td>
-                                <td>{{ dish.price }}</td></div>
+                                <div>
+                                    <td>{{ dish.name }}</td>
+                                    <td>{{ dish.weight }}</td>
+                                    <td>{{ dish.price }}</td>
+                                    <button><a href="">Add</a></button>
+                                </div>
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}

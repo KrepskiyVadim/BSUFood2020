@@ -28,9 +28,9 @@ class Dish
     private $price;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
-    private $count;
+    private $weight;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="dishes")
@@ -67,14 +67,14 @@ class Dish
         return $this;
     }
 
-    public function getCount(): ?int
+    public function getWeight(): ?string
     {
-        return $this->count;
+        return $this->weight;
     }
 
-    public function setCount(int $count): self
+    public function setWeight(string $weight): self
     {
-        $this->count = $count;
+        $this->weight = $weight;
 
         return $this;
     }

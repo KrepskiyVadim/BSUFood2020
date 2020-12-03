@@ -24,7 +24,7 @@ class CreateDishController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
             $dish->setName($form->get('name')->getData());
-            $dish->setCount($form->get('count')->getData());
+            $dish->setWeight($form->get('weight')->getData());
             $dish->setPrice($form->get('price')->getData());
             $dish->setCategory($form->get('category')->getData());
             $em->persist($dish);
