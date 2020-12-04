@@ -25,7 +25,8 @@
                                     {% if dish.category.id == category.id %}
 
                                         <div style="width: calc(33.3% - 20px); height: auto; margin: 5px; border-radius: 6px; background-color: #fff; display: flex; flex-direction: column; position: relative;">
-                                            <img src="{{ dish.image }}" style="width: 100%; min-height: 240px;">
+                                            <img src="{{ dish.image }}"
+                                                 style="width: 97%; min-height: 240px; margin: 5px;">
                                             <div style="height: 60px;"><h4>{{ dish.name }}</h4></div>
                                             <div class="text-left" style="height: 100px;"> <span
                                                         style="float:left; margin-left:10px;"><b>Состав: </b>{% for dishComposition in dishCompositions %}
