@@ -1,4 +1,4 @@
-{% extends 'homeBase.html.twig' %}
+{% extends parent_template %}
 
 {% block title %}BSUfood{% endblock %}
 
@@ -13,12 +13,12 @@
     <main>
         <div class="container-fluid"
              style="margin:100px auto; padding: 20px; background-color: white;">
-                {% if dishes %}
-                    {% if categories %}
-                        {% for category in categories %}
-                            <h1>{{ category.name }}</h1>
-                            {% for dish in dishes %}
-                                {% if dish.category.id == category.id %}
+            {% if dishes %}
+                {% if categories %}
+                    {% for category in categories %}
+                        <h1>{{ category.name }}</h1>
+                        {% for dish in dishes %}
+                            {% if dish.category.id == category.id %}
                                 <div>
                                     <td>{{ dish.name }}</td>
                                     <td>{{ dish.weight }}</td>
@@ -31,11 +31,11 @@
                                     {% endfor %}
                                     <button><a href="">Add</a></button>
                                 </div>
-                                {% endif %}
-                            {% endfor %}
+                            {% endif %}
                         {% endfor %}
-                    {% endif %}
+                    {% endfor %}
                 {% endif %}
+            {% endif %}
             <div class="navigation">
                 {{ knp_pagination_render(dishes) }}
             </div>
@@ -44,4 +44,3 @@
     </main>
 
 {% endblock %}
-
