@@ -31,9 +31,9 @@
                                             <div class="text-left" style="height: 100px;"> <span
                                                         style="float:left; margin-left:10px;"><b>Состав: </b>{% for dishComposition in dishCompositions %}
                                                     {% if dish.id == dishComposition.dish.id %}
-                                                    {{ dishComposition.ingredient.name }},
-                                                {% endif %}
-                                                {% endfor %}</span></div>
+                                                        {{ dishComposition.ingredient.name }},
+                                                    {% endif %}
+                                                    {% endfor %}специи</span></div>
                                             <div>
                                                 <span style="float:left; margin-left:10px;"><b>Масса порции: </b>{{ dish.weight }} г</span>
                                             </div>
