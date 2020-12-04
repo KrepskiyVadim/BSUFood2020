@@ -11,28 +11,52 @@
     </script>
 
     <main>
-        <div class="container-fluid"
-             style="margin:100px auto; padding: 20px; background-color: white;">
+        <div class="container-fluid text-center"
+             style="margin:60px auto; padding: 20px; background-color: #E5E5E5;">
             {% if dishes %}
                 {% if categories %}
                     {% for category in categories %}
-                        <h1>{{ category.name }}</h1>
-                        {% for dish in dishes %}
-                            {% if dish.category.id == category.id %}
-                                <div>
-                                    <td>{{ dish.name }}</td>
-                                    <td>{{ dish.weight }}</td>
-                                    <td>{{ dish.price }}</td>
-                                    <td><img src="{{ dish.image }}"></td>
-                                    {% for dishComposition in dishCompositions %}
-                                        {% if dish.id == dishComposition.dish.id %}
-                                            <td>{{ dishComposition.ingredient.name }}</td>
-                                        {% endif %}
-                                    {% endfor %}
-                                    <button><a href="">Add</a></button>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+                        <div class="row ">
+                            <h1 class="text-center">{{ category.name }}</h1>
+                            <div class="col-md-8 mx-auto"
+                                 style="margin: -5px; display: flex; flex-wrap: wrap; width: 1000px">
+                                {% for dish in dishes %}
+                                    {% if dish.category.id == category.id %}
+
+                                        <div style="width: calc(33.3% - 10px); height: auto; margin: 5px; border-radius: 6px; background-color: #fff; display: flex; flex-direction: column; position: relative;">
+                                            <img src="{{ dish.image }}" style="width: 100%; min-height: 240px;">
+                                            <div style="height: 60px;"><h4>{{ dish.name }}</h4></div>
+                                            <div class="text-left" style="height: 100px;"> <span
+                                                        style="float:left; margin-left:10px;"><b>Состав: </b>{% for dishComposition in dishCompositions %}
+                                                    {% if dish.id == dishComposition.dish.id %}
+                                                    {{ dishComposition.ingredient.name }},
+                                                {% endif %}
+                                                {% endfor %}</span></div>
+                                            <div>
+                                                <span style="float:left; margin-left:10px;"><b>Масса порции: </b>{{ dish.weight }} г</span>
+                                            </div>
+                                            <div style="margin-bottom: 10px;"><span
+                                                        style="float:left; margin-left:10px;"><b>Цена: </b>{{ dish.price }} руб.</span>
+                                                <span
+                                                        style="float:right; margin-right:10px;"> <a href="">
+                                                    <svg width="30px" height="30px" viewBox="0 0 16 16"
+                                                         class="bi bi-cart-plus" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                                        <path fill-rule="evenodd"
+                                                              d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                                                    </svg>
+                                                </a>
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     {% endfor %}
                 {% endif %}
             {% endif %}
@@ -44,3 +68,4 @@
     </main>
 
 {% endblock %}
+
