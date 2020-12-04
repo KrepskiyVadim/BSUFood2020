@@ -17,6 +17,7 @@
                 {% if categories %}
                     {% for category in categories %}
                         <div class="row ">
+                            <a name={{ category.name }}></a>
                             <h2 class="text-center" style="margin: 15px 0;">{{ category.name }}</h2>
                             <div class="col-md-8 mx-auto"
                                  style="margin: -5px; display: flex; flex-wrap: wrap; width: 1000px">
