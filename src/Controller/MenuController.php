@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Dish;
+use App\Entity\OrderFromMenu;
 use App\Repository\CategoryRepository;
 use App\Repository\DishCompositionRepository;
 use App\Repository\DishRepository;
 use App\Repository\IngredientRepository;
+use App\Repository\OrderFromMenuRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,5 +50,25 @@ class MenuController extends AbstractController
             'parent_template'=>$parent_template
         ]);
     }
+    /**
+     * @Route("/menu/add_dish/{id}", name="add_dish")
+     * @param $id
+     */
+    public function addDish(int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dsh = $em->getRepository(Dish::class)->find($id);
+        //$order = $orderFromMenuRepository->findAll();
+        if(($ord = $em->getRepository(OrderFromMenu::class)->findByUser($this->getUser())) == null) {
+            $ord->setDish($dsh);
+            $ord->setCount(1);
+            $ord->setSum($dsh->getPrice());
+            $ord->setUser($this->getUser());
+        }
+        //$em->remove($dsh);
+        $em->flush();
 
+
+        return $this->redirectToRoute('menu');
+    }
 }

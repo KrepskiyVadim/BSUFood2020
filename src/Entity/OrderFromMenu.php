@@ -33,6 +33,12 @@ class OrderFromMenu
      */
     private $sum;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +76,18 @@ class OrderFromMenu
     public function setSum(string $sum): self
     {
         $this->sum = $sum;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
