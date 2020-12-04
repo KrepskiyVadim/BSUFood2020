@@ -35,6 +35,22 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
+
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" style="background-color: #0A3470; color: rgba(255,255,255,.55);">
+                            Меню
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Супы</a>
+                            <a class="dropdown-item" href="#">Салаты</a>
+                            <a class="dropdown-item" href="{{ path('mainpage') }}">Горячие блюда</a>
+                            <a class="dropdown-item" href="{{ path('mainpage') }}">Блюда из рыбы</a>
+                            <a class="dropdown-item" href="{{ path('mainpage') }}">Гарнир</a>
+                            <a class="dropdown-item" href="#">Десерты</a>
+                            <a class="dropdown-item" href="#">Напитки</a>
+                        </div>
+                    </div>
                     <a class="nav-link" href="/admin/users">Пользователи</a>
                     <a class="nav-link" href="/admin/dishes">Блюда</a>
                     <a class="nav-link" href="/admin/categories">Категории</a>
