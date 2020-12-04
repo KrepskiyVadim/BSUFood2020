@@ -23,6 +23,11 @@
                                     <td>{{ dish.name }}</td>
                                     <td>{{ dish.weight }}</td>
                                     <td>{{ dish.price }}</td>
+                                    {% for dishComposition in dishCompositions %}
+                                        {% if dish.id == dishComposition.dish.id %}
+                                            <td>{{ dishComposition.ingredient.name }}</td>
+                                        {% endif %}
+                                    {% endfor %}
                                     <button><a href="">Add</a></button>
                                 </div>
                                 {% endif %}
