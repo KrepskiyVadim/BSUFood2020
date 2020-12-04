@@ -23,6 +23,7 @@
                                     <td>{{ dish.name }}</td>
                                     <td>{{ dish.weight }}</td>
                                     <td>{{ dish.price }}</td>
+                                    <td><img src="{{ dish.image }}"></td>
                                     {% for dishComposition in dishCompositions %}
                                         {% if dish.id == dishComposition.dish.id %}
                                             <td>{{ dishComposition.ingredient.name }}</td>

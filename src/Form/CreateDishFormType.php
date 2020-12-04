@@ -23,8 +23,8 @@ class CreateDishFormType extends AbstractType
                     'expanded'=>false,
                 ])
                 ->add('price')
-                ->add('weight');
-        ;
+                ->add('weight')
+                ->add('image');
     }
 
     public function configureOptions(OptionsResolver $resolver)

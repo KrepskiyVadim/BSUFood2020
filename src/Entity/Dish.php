@@ -38,6 +38,11 @@ class Dish
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,5 +98,17 @@ class Dish
     public function __toString()
     {
         return (string) $this->getId();
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

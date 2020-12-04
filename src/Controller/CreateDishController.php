@@ -27,6 +27,7 @@ class CreateDishController extends AbstractController
             $dish->setWeight($form->get('weight')->getData());
             $dish->setPrice($form->get('price')->getData());
             $dish->setCategory($form->get('category')->getData());
+            $dish->setImage($form->get('image')->getData());
             $em->persist($dish);
             $em->flush();
             return $this->redirectToRoute('admin');
