@@ -40,7 +40,7 @@
                                             <div style="margin-bottom: 10px;"><span
                                                         style="float:left; margin-left:10px;"><b>Цена: </b>{{ dish.price }} руб.</span>
                                                 <span
-                                                        style="float:right; margin-right:10px;"> <a href="{{ absolute_url(asset('')) }}menu/add_dish/{{ dish.id }}">
+                                                        style="float:right; margin-right:10px;"> <a href="{{ path('add_dish',{"id":dish.id})  }}">
                                                     <svg width="30px" height="30px" viewBox="0 0 16 16"
                                                          class="bi bi-cart-plus" fill="currentColor"
                                                          xmlns="http://www.w3.org/2000/svg">
