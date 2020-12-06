@@ -58,18 +58,20 @@ class MenuController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $dsh = $em->getRepository(Dish::class)->find($id);
-        //$order = $orderFromMenuRepository->findAll();
-        if(($ord = $em->getRepository(OrderFromMenu::class)->findByUser($this->getUser())) == null) {
+        if($em->getRepository(OrderFromMenu::class)->findByUser($this->getUser()) == null ||
+            $em->getRepository(OrderFromMenu::class)->findByDish($dsh)==null) {
             $ord = new OrderFromMenu();
             $ord->setDish($dsh);
             $ord->setCount(1);
             $ord->setSum($dsh->getPrice());
             $ord->setUser($this->getUser());
         }
+        else {
+            $ord = $em->getRepository(OrderFromMenu::class)->findByDish($dsh);
+            $ord->setCount($ord->getCount()+1);
+        }
         $em->persist($ord);
         $em->flush();
-
-
         return $this->redirectToRoute('menu');
     }
 }

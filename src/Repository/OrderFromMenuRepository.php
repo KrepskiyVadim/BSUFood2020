@@ -32,4 +32,13 @@ class OrderFromMenuRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+    public function findByDish($value){
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.dish = :val')
+            ->setParameter('val', $value)
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
