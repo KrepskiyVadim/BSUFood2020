@@ -30,7 +30,7 @@ class CreateDishController extends AbstractController
             $dish->setImage($form->get('image')->getData());
             $em->persist($dish);
             $em->flush();
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('admin/create/dish');
         }
         return $this->render('create_dish/index.html.twig', [
             'form'=>$form->createView(),

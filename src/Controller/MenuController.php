@@ -58,17 +58,38 @@ class MenuController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $dsh = $em->getRepository(Dish::class)->find($id);
-        if($em->getRepository(OrderFromMenu::class)->findByUser($this->getUser()) == null ||
-            $em->getRepository(OrderFromMenu::class)->findByDish($dsh)==null) {
+        $ord = null;
+        if($em->getRepository(OrderFromMenu::class)->findByUser($this->getUser()) == null) {
             $ord = new OrderFromMenu();
             $ord->setDish($dsh);
             $ord->setCount(1);
             $ord->setSum($dsh->getPrice());
             $ord->setUser($this->getUser());
         }
-        else {
-            $ord = $em->getRepository(OrderFromMenu::class)->findByDish($dsh);
-            $ord->setCount($ord->getCount()+1);
+        else{
+            $orders = $em->getRepository(OrderFromMenu::class)->findAll();
+            $isHasAlready = false;
+                foreach ($orders as $order)
+                {
+                    if($order->getUser()==$this->getUser()&&$order->getDish()==$dsh)
+                    {
+                        $isHasAlready = true;
+                        $ord = $order;
+                        break;
+                    }
+                }
+                if($isHasAlready)
+                {
+                    $ord->setCount($ord->getCount()+1);
+                    $ord->setSum($ord->getSum()+$dsh->getPrice());
+                }
+                else {
+                    $ord = new OrderFromMenu();
+                    $ord->setDish($dsh);
+                    $ord->setCount(1);
+                    $ord->setSum($dsh->getPrice());
+                    $ord->setUser($this->getUser());
+                }
         }
         $em->persist($ord);
         $em->flush();

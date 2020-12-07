@@ -11,49 +11,31 @@
     </script>
 
     <main>
-        <div class="container-fluid"
-             style="margin:50px auto; padding: 20px; background-color: white;">
-            <table class="table table-hover table-bordered table-striped" id="ordertable">
-                <thead style=" background-color: #0A3470;">
-                <tr style="color: rgba(255,255,255,.55)">
-                    <th scope="col">Id</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">PhoneNumber</th>
-                    <th scope="col">Roles</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% if users %}
-                    {% for user in users %}
+        <div class="container-fluid" style="margin:50px auto; padding: 20px; background-color: white;">
+                {% if orders %}
+                    {% for order in orders %}
+                        {% if order.user.username == user.username %}
                         <tr>
-                            <td scope="col">{{ user.id }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.phonenumber }}</td>
-                            <td>{{ user.roles | json_encode }}</td>
-                            {% if user.status %}
-                                <td>active</td>
-                            {% else %}
-                                <td>not active</td>
-                            {% endif %}
-                            <td><a href="{{ absolute_url(asset('')) }}admin/users/delete_user/{{ user.id }}">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill"
-                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                                    </svg>
-                                </a></td>
+                            <img src="{{ order.dish.image }}">
+                            {{ order.dish.name }}
+                            {{ order.count }}
+                            {{ order.sum }}
+                            <a href="order/delete_dish/{{ order.dish.id }}"><button>-</button></a>
+                            <a href="order/add_dish/{{ order.dish.id }}"><button>+</button></a>
+                            <p></p>
                         </tr>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
-
-                </tbody>
-            </table>
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.address,null,{ 'label':'Адрес доставки'}) }}
+                {{ form_widget(form.address,{'attr': {'class': 'form-control', 'style':'background-color: #E5E5E5;'}}) }}
+            </div>
+            <button>Принять</button>
+            {{ form_end(form) }}
             <div class="navigation">
-                {{ knp_pagination_render(users) }}
+                {{ knp_pagination_render(orders) }}
             </div>
         </div>
     </main>

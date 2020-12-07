@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BSUfood{% endblock %}
+
+
+
+{% block content %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+
+
+    <main>
+        <div class="container-fluid"
+             style="width:500px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
+            <h1>Thank you for the order!!!</h1>
+            <a href="{{ path('delete_order') }}"><button>Ok</button></a>
+        </div>
+    </main>
+
+{% endblock %}
+
+
+
+

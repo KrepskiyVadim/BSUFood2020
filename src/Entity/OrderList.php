@@ -18,31 +18,24 @@ class OrderList
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=OrderFromMenu::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $order_id;
-
-    /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
      */
     private $sum;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="string", length=510)
+     */
+    private $address;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getOrderId(): ?OrderFromMenu
-    {
-        return $this->order_id;
-    }
-
-    public function setOrderId(?OrderFromMenu $order_id): self
-    {
-        $this->order_id = $order_id;
-
-        return $this;
     }
 
     public function getSum(): ?string
@@ -53,6 +46,30 @@ class OrderList
     public function setSum(string $sum): self
     {
         $this->sum = $sum;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }

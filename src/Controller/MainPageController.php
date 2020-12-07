@@ -14,10 +14,7 @@ class MainPageController extends AbstractController
     public function index(): Response
     {
         if ($this->getUser()) {
-            if (in_array("ROLE_ADMIN",$this->getUser()->getRoles())) {
-                return $this->redirectToRoute('admin');
-            }
-            return $this->redirectToRoute('quizzes');
+            return $this->redirectToRoute('menu');
         }
         return $this->render('home/index.html.twig');
     }
