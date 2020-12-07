@@ -42,6 +42,8 @@ class UsersOrderController extends AbstractController
                     $sum += $ord->getSum();
             }
             $orderList->setSum($sum);
+            $date = new \DateTime();
+            $orderList->setDate($date);
             $em->persist($orderList);
             $em->flush();
             return $this->redirectToRoute('thanks');
