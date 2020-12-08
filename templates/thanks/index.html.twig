@@ -14,9 +14,15 @@
 
     <main>
         <div class="container-fluid"
-             style="width:500px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
-            <h1>Thank you for the order!!!</h1>
-            <a href="{{ path('delete_order') }}"><button>Ok</button></a>
+             style="width:300px; margin:100px auto; padding: 20px; background-color: white; border: 1px solid black; border-radius: 15px;">
+            <h3>Спасибо за заказ!!!</h3>
+
+            <div class="text-center" style="margin-top: 10px;">
+                <a href="{{ path('delete_order') }}">
+                    <button type="submit" class="btn btn-primary" style="background-color: #0A3470;">Ок</button>
+                </a>
+            </div>
+
         </div>
     </main>
 
