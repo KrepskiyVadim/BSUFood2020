@@ -50,9 +50,14 @@ class UsersOrderController extends AbstractController
                 return $this->redirectToRoute('thanks');
             }
             $user = $this->getUser();
-            return $this->render('userorder/index.html.twig', [
+            if($user->getStatus()==true)
+                return $this->render('wait/index.html.twig');
+            else
+            {
+                return $this->render('userorder/index.html.twig', [
                 'orders' => $result, 'user' => $user, 'form' => $form->createView()
             ]);
+            }
         }
         else {
             return $this->redirectToRoute('menu');
@@ -71,7 +76,7 @@ class UsersOrderController extends AbstractController
             $em->flush();
             $ord = $em->getRepository(OrderFromMenu::class)->findByUser($this->getUser());
         }
-        return $this->redirectToRoute('menu');
+        return $this->redirectToRoute('admin_orders');
     }
     /**
      * @Route("/order/add_dish/{id}", name="order_add_dish")

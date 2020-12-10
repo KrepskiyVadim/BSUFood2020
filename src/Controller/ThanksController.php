@@ -16,6 +16,11 @@ class ThanksController extends AbstractController
      */
     public function index():Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user->setStatus(true);
+        $em->persist($user);
+        $em->flush();
         return $this->render('thanks/index.html.twig');
     }
 }

@@ -39,6 +39,7 @@
                                             </div>
                                             <div style="margin-bottom: 10px;"><span
                                                         style="float:left; margin-left:10px;"><b>Цена: </b>{{ dish.price }} руб.</span>
+                                                {% if app.user.status == false %}
                                                 <span
                                                         style="float:right; margin-right:10px;"> <a href="{{ path('add_dish',{"id":dish.id})  }}">
                                                     <svg width="30px" height="30px" viewBox="0 0 16 16"
@@ -51,6 +52,7 @@
                                                     </svg>
                                                 </a>
                                                 </span>
+                                                    {% endif %}
                                             </div>
 
                                         </div>

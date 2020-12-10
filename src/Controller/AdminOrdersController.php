@@ -44,8 +44,11 @@ class AdminOrdersController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $ord = $em->getRepository(OrderList::class)->find($id);
+        $user = $this->getUser();
+        $user->setStatus(false);
+        $em->persist($user);
         $em->remove($ord);
         $em->flush();
-        return $this->redirectToRoute('admin_orders');
+        return $this->redirectToRoute('delete_order');
     }
 }
