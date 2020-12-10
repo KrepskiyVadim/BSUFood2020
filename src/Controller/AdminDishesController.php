@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Dish;
-use App\Form\CreateDishFormType;
 use App\Form\EditDishFormType;
 use App\Repository\DishRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -29,6 +28,20 @@ class AdminDishesController extends AbstractController
             'dishes' => $result,
         ]);
     }
+
+    /**
+     * @Route("/admin/dishes/delete_dish/{id}", name="delete_dish")
+     * @param $id
+     */
+    public function deleteDishByTable(int $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dsh = $em->getRepository(Dish::class)->find($id);
+        $em->remove($dsh);
+        $em->flush();
+        return $this->redirectToRoute('admin_dishes');
+    }
+
     /**
      * @Route("/admin/dishes/edit_dish/{id}", name="edit_dish")
      * @param $id
@@ -63,17 +76,5 @@ class AdminDishesController extends AbstractController
             'weight'=>$weight,
             'price'=>$price
         ]);
-    }
-    /**
-     * @Route("/admin/dishes/delete_dish/{id}", name="delete_dish")
-     * @param $id
-     */
-    public function deleteDish(int $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $dsh = $em->getRepository(Dish::class)->find($id);
-        $em->remove($dsh);
-        $em->flush();
-        return $this->redirectToRoute('admin_dishes');
     }
 }

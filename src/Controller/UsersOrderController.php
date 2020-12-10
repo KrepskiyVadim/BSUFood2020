@@ -101,7 +101,7 @@ class UsersOrderController extends AbstractController
      * @Route("/order/delete_dish/{id}", name="order_delete_dish")
      * @param $id
      */
-    public function deleteDish(int $id)
+    public function deleteDishFromOrder(int $id)
     {
         $em = $this->getDoctrine()->getManager();
         $dsh = $em->getRepository(Dish::class)->find($id);
