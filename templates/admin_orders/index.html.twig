@@ -18,20 +18,28 @@
                 <tr style="color: rgba(255,255,255,.55)">
                     <th scope="col">Id</th>
                     <th scope="col">Username</th>
+                    <th scope="col">Dishes</th>
                     <th scope="col">Sum</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Date</th>
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% if orders %}
-                    {% for order in orders %}
+                {% if ordersLists %}
+                    {% for ordersList in ordersLists %}
                         <tr>
-                            <td scope="col">{{ order.id }}</td>
-                            <td>{{ order.user.username }}</td>
-                            <td>{{ order.sum }}</td>
-                            <td>{{ order.date | date("d/M/yy H:i")}}</td>
-                            <td><a href="{{ absolute_url(asset('')) }}admin/orders/delete_order/{{ order.id }}">
+                            <td scope="col">{{ ordersList.id }}</td>
+                            <td>{{ ordersList.user.username }}</td>
+                            <td>{% for order in orders %}
+                                {% if order.user == ordersList.user %}
+                                {{ order.dish.name }}({{ order.count }})
+                                {% endif %}
+                                {% endfor %}</td>
+                            <td>{{ ordersList.sum }}</td>
+                            <td>{{ ordersList.address }}</td>
+                            <td>{{ ordersList.date | date("d/M/yy H:i")}}</td>
+                            <td><a href="{{ absolute_url(asset('')) }}admin/orders/delete_order/{{ ordersList.id }}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -45,7 +53,7 @@
                 </tbody>
             </table>
             <div class="navigation">
-                {{ knp_pagination_render(orders) }}
+                {{ knp_pagination_render(ordersLists) }}
             </div>
         </div>
     </main>

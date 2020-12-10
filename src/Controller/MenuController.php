@@ -40,10 +40,12 @@ class MenuController extends AbstractController
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 100000)
         );
-        if(in_array("ROLE_ADMIN",$this->getUser()->getRoles()))
-            $parent_template = 'adminBase.html.twig';
-        else if(in_array("ROLE_USER",$this->getUser()->getRoles()))
-           $parent_template = 'homeBase.html.twig';
+        if($this->getUser()) {
+            if (in_array("ROLE_ADMIN", $this->getUser()->getRoles()))
+                $parent_template = 'adminBase.html.twig';
+            else
+                $parent_template = 'homeBase.html.twig';
+        }
         else $parent_template = 'base.html.twig';
         return $this->render('menu/index.html.twig', [
             'dishes' => $result_dish, 'categories'=>$result_category, 'dishCompositions' => $result_dishComposition,

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Dish;
+use App\Entity\OrderFromMenu;
 use App\Entity\OrderList;
 use App\Repository\DishRepository;
 use App\Repository\OrderListRepository;
@@ -21,14 +22,16 @@ class AdminOrdersController extends AbstractController
      */
     public function index(OrderListRepository $orderListRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $orders = $orderListRepository->findAll();
+        $orderLists = $orderListRepository->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $orders = $em->getRepository(OrderFromMenu::class)->findAll();
         $result = $paginator->paginate(
-            $orders,
+            $orderLists,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 100000)
         );
         return $this->render('admin_orders/index.html.twig', [
-            'orders' => $result,
+            'ordersLists' => $result, 'orders'=>$orders
         ]);
     }
     /**

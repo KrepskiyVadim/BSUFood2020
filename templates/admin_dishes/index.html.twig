@@ -22,6 +22,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">Weight</th>
                     <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
@@ -35,7 +36,8 @@
                             <td>{{ dish.price }}</td>
                             <td>{{ dish.weight }}</td>
                             <td>{{ dish.image }}</td>
-                            <td><a href="{{ absolute_url(asset('')) }}admin/dishes/delete_dish/{{ dish.id }}">
+                            <td><a href="/admin/dishes/edit_dish/{{ dish.id }}"><button>Edit</button></a></td>
+                            <td><a href="dishes/delete_dish/{{ dish.id }}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"

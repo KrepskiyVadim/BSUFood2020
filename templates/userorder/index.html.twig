@@ -85,6 +85,10 @@
                 </button>
             </div>
             {{ form_end(form) }}
+            <div class="text-center" style="margin-top: 10px;">
+                <a href="{{ path('cancel_order') }}"><button type="submit" class="btn btn-primary" style="background-color: #0A3470;">Отменить заказ
+                    </button></a>
+            </div>
             <div class="navigation">
                 {{ knp_pagination_render(orders) }}
             </div>
