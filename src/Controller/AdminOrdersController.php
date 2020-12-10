@@ -34,11 +34,13 @@ class AdminOrdersController extends AbstractController
             'ordersLists' => $result, 'orders'=>$orders
         ]);
     }
+
     /**
-     * @Route("/admin/orders/delete_order/{id}", name="delete_order")
+     * @Route("/admin/orders/delete_order/{id}", name="admin_delete_order")
      * @param $id
+     * @return Response
      */
-    public function deleteOrder(int $id)
+    public function deleteOrder(int $id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $ord = $em->getRepository(OrderList::class)->find($id);
