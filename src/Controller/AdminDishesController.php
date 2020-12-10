@@ -33,7 +33,7 @@ class AdminDishesController extends AbstractController
      * @Route("/admin/dishes/delete_dish/{id}", name="delete_dish")
      * @param $id
      */
-    public function deleteDishByTable(int $id)
+    public function deleteDishByTable(int $id):Response
     {
         $em = $this->getDoctrine()->getManager();
         $dsh = $em->getRepository(Dish::class)->find($id);

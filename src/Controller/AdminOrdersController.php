@@ -35,7 +35,7 @@ class AdminOrdersController extends AbstractController
         ]);
     }
     /**
-     * @Route("/admin/orders/delete_order/{id}", name="delete_dish")
+     * @Route("/admin/orders/delete_order/{id}", name="delete_order")
      * @param $id
      */
     public function deleteOrder(int $id)
